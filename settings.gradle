@@ -1,1 +1,1 @@
-include ':sample', ':lifecycler', ':mvpbase'
+include ':sample', ':lifecycler', ':mvpbase', ':databinding', ':rxutils'

@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/databinding/databinding.iml" filepath="$PROJECT_DIR$/databinding/databinding.iml" />
       <module fileurl="file://$PROJECT_DIR$/lifecycler/lifecycler.iml" filepath="$PROJECT_DIR$/lifecycler/lifecycler.iml" />
       <module fileurl="file://$PROJECT_DIR$/mqd-android-utils.iml" filepath="$PROJECT_DIR$/mqd-android-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/mvpbase/mvpbase.iml" filepath="$PROJECT_DIR$/mvpbase/mvpbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxutils/rxutils.iml" filepath="$PROJECT_DIR$/rxutils/rxutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
     </modules>
   </component>
