@@ -8,7 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/databinding" />
+            <option value="$PROJECT_DIR$/data-binding-utils" />
             <option value="$PROJECT_DIR$/lifecycler" />
             <option value="$PROJECT_DIR$/mvpbase" />
             <option value="$PROJECT_DIR$/rxutils" />
