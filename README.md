@@ -1,4 +1,4 @@
-# mqd-android-utils
+# mqd-android-utils [![](https://jitpack.io/v/moqod/mqd-android-utils.svg)](https://jitpack.io/#moqod/mqd-android-utils)
 
 **Data binding utils:**
 
