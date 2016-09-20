@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/mvp-base" />
             <option value="$PROJECT_DIR$/rx-utils" />
             <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/ui-utils" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
