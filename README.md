@@ -22,3 +22,11 @@
         compile 'com.github.moqod.mqd-android-utils:mvp-base:x.y.z'
     }
 ```
+
+**UI utils:**
+
+```gradle
+    dependencies {
+        compile 'com.github.moqod.mqd-android-utils:ui-utils:x.y.z'
+    }
+```
