@@ -30,3 +30,10 @@
         compile 'com.github.moqod.mqd-android-utils:ui-utils:x.y.z'
     }
 ```
+**Lifecycler:**
+
+```gradle
+    dependencies {
+        compile 'com.github.moqod.mqd-android-utils:lifecycler:x.y.z'
+    }
+```
