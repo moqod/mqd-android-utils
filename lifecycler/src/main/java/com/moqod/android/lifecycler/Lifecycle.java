@@ -2,6 +2,7 @@ package com.moqod.android.lifecycler;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,5 +19,5 @@ public interface Lifecycle {
     void onStop();
     void onDestroy();
     void saveState(Bundle outState);
-    void restoreState(Bundle inState);
+    void restoreState(@Nullable Bundle inState);
 }

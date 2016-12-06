@@ -2,6 +2,7 @@ package com.moqod.android.lifecycler;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -43,6 +44,6 @@ public abstract class LifecycleAdapter implements Lifecycle {
     }
 
     @Override
-    public void restoreState(Bundle inState) {
+    public void restoreState(@Nullable Bundle inState) {
     }
 }
