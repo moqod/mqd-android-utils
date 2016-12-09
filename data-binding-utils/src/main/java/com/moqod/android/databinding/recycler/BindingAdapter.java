@@ -50,7 +50,7 @@ public abstract class BindingAdapter<T extends ViewDataBinding> extends Recycler
 
     @Override
     public final void onBindViewHolder(BindingViewHolder<T> holder, int position) {
-        // not used
+        onBindViewHolder(holder, position, null);
     }
 
     @Override
@@ -70,8 +70,7 @@ public abstract class BindingAdapter<T extends ViewDataBinding> extends Recycler
         return false;
     }
 
-    protected abstract void bindItem(BindingViewHolder<T> holder, int position,
-                                     List<Object> payloads);
+    protected abstract void bindItem(BindingViewHolder<T> holder, int position, @Nullable List<Object> payloads);
 
     @Override
     public final int getItemViewType(int position) {
