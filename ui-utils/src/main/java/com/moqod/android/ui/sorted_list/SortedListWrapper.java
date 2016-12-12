@@ -30,6 +30,13 @@ public class SortedListWrapper<T extends SortedEntity> {
         diffResult.dispatchUpdatesTo(mAdapter);
     }
 
+    public void addData(List<T> data) {
+        ArrayList<T> newData = new ArrayList<>(mData.size() + data.size());
+        newData.addAll(mData);
+        newData.addAll(data);
+        setData(newData);
+    }
+
     public T get(int position) {
         return mData.get(position);
     }
