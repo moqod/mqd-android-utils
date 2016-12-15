@@ -52,9 +52,9 @@ public class CreatePhotoComponent extends LifecycleAdapter {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_CAMERA) {
             if (resultCode == Activity.RESULT_OK && mFileUri != null) {
-                mListener.onPhotoAdded(mFileUri);
+                mListener.onPhotoAdded(mFileUri, requestCode);
             } else {
-                mListener.onCanceled();
+                mListener.onCanceled(requestCode);
             }
         }
     }

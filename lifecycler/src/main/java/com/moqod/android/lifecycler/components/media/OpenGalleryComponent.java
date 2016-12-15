@@ -66,13 +66,13 @@ public class OpenGalleryComponent extends LifecycleAdapter {
 
                 if (type != null) {
                     if (type.contains("image")) {
-                        mListener.onPhotoAdded(data.getData());
+                        mListener.onPhotoAdded(data.getData(), requestCode);
                     } else if (type.contains("video")) {
-                        mListener.onVideoAdded(data.getData());
+                        mListener.onVideoAdded(data.getData(), requestCode);
                     }
                 }
             } else {
-                mListener.onCanceled();
+                mListener.onCanceled(requestCode);
             }
         }
     }

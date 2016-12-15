@@ -55,9 +55,9 @@ public class CreateVideoComponent extends LifecycleAdapter {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK && mFileUri != null) {
-                mListener.onVideoAdded(mFileUri);
+                mListener.onVideoAdded(mFileUri, requestCode);
             } else {
-                mListener.onCanceled();
+                mListener.onCanceled(requestCode);
             }
         }
     }

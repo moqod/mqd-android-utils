@@ -9,7 +9,7 @@ import android.net.Uri;
  * Time: 14:41
  */
 public interface MediaListener {
-    void onCanceled();
-    void onPhotoAdded(Uri uri);
-    void onVideoAdded(Uri uri);
+    void onCanceled(int requestCode);
+    void onPhotoAdded(Uri uri, int requestCode);
+    void onVideoAdded(Uri uri, int requestCode);
 }
