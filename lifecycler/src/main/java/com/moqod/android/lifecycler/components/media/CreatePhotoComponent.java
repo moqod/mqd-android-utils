@@ -30,11 +30,15 @@ public class CreatePhotoComponent extends LifecycleAdapter {
     }
 
     public void start(Fragment fragment, File cacheFile) {
+        start(fragment, cacheFile, REQUEST_CODE_CAMERA);
+    }
+
+    public void start(Fragment fragment, File cacheFile, int requestCode) {
         mFileUri = Uri.fromFile(cacheFile);
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-        fragment.startActivityForResult(intent, REQUEST_CODE_CAMERA);
+        fragment.startActivityForResult(intent, requestCode);
     }
 
     @Override
