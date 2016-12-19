@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/base-app/base-app.iml" filepath="$PROJECT_DIR$/base-app/base-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/data-binding-utils/data-binding-utils.iml" filepath="$PROJECT_DIR$/data-binding-utils/data-binding-utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/lifecycler/lifecycler.iml" filepath="$PROJECT_DIR$/lifecycler/lifecycler.iml" />
       <module fileurl="file://$PROJECT_DIR$/mqd-android-utils.iml" filepath="$PROJECT_DIR$/mqd-android-utils.iml" />
