@@ -16,28 +16,25 @@ import static android.R.attr.data;
  */
 public class OpenGalleryComponent extends LifecycleAdapter {
 
-    private static final int REQUEST_CODE_GALLERY = 102;
-
     private ContentResolver mContentResolver;
     private MediaListener mListener;
     private boolean mVideo;
+    private final int mRequestCode;
 
-    public OpenGalleryComponent(ContentResolver contentResolver, MediaListener listener) {
+    public OpenGalleryComponent(ContentResolver contentResolver, int requestCode, MediaListener listener) {
         mContentResolver = contentResolver;
+        mRequestCode = requestCode;
         mListener = listener;
     }
 
-    public OpenGalleryComponent(ContentResolver contentResolver, MediaListener listener, boolean video) {
+    public OpenGalleryComponent(ContentResolver contentResolver, int requestCode, MediaListener listener, boolean video) {
         mContentResolver = contentResolver;
+        mRequestCode = requestCode;
         mListener = listener;
         mVideo = video;
     }
 
     public void start(Fragment fragment) {
-        start(fragment, REQUEST_CODE_GALLERY);
-    }
-
-    public void start(Fragment fragment, int requestCode) {
         String[] mimeTypes;
         if (mVideo) {
             mimeTypes = new String[] {
@@ -53,12 +50,12 @@ public class OpenGalleryComponent extends LifecycleAdapter {
         intent.setType("*/*");
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
         intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-        fragment.startActivityForResult(intent, requestCode);
+        fragment.startActivityForResult(intent, mRequestCode);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE_GALLERY) {
+        if (requestCode == mRequestCode) {
             if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
                 final int takeFlags = data.getFlags() & (Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 mContentResolver.takePersistableUriPermission(data.getData(), takeFlags);

@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import com.moqod.android.lifecycler.LifecycleAdapter;
@@ -20,28 +19,24 @@ import java.io.File;
  */
 public class CreateVideoComponent extends LifecycleAdapter {
 
-    private static final int REQUEST_CODE = 201;
     private static final String KEY_FILE_URI = "CreateVideoComponent::mFileUri";
 
     private MediaListener mListener;
     private @Nullable Uri mFileUri;
+    private final int mRequestCode;
 
-
-    public CreateVideoComponent(@NonNull MediaListener listener) {
+    public CreateVideoComponent(int requestCode, MediaListener listener) {
+        mRequestCode = requestCode;
         mListener = listener;
     }
 
     public void start(Fragment fragment, File cacheFile) {
-        start(fragment, cacheFile, REQUEST_CODE);
-    }
-
-    public void start(Fragment fragment, File cacheFile, int requestCode) {
         mFileUri = Uri.fromFile(cacheFile);
 
         Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-        fragment.startActivityForResult(intent, requestCode);
+        fragment.startActivityForResult(intent, mRequestCode);
     }
 
     @Override
@@ -53,7 +48,7 @@ public class CreateVideoComponent extends LifecycleAdapter {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == mRequestCode) {
             if (resultCode == Activity.RESULT_OK && mFileUri != null) {
                 mListener.onVideoAdded(mFileUri, requestCode);
             } else {
