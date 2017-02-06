@@ -45,6 +45,16 @@ public class SortedListWrapper<T extends SortedEntity> {
         return mData.size();
     }
 
+    public boolean remove(T t) {
+        int index = mData.indexOf(t);
+        if (index > -1) {
+            mData.remove(index);
+            mAdapter.notifyItemRemoved(index);
+            return true;
+        }
+        return false;
+    }
+
     @SuppressWarnings("unchecked")
     private static class SortedCallback<T extends SortedEntity> extends DiffUtil.Callback {
 
