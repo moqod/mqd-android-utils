@@ -31,12 +31,16 @@ public abstract class BindingAdapter<T extends ViewDataBinding> extends Recycler
                 return true;
             }
 
-            int adapterPosition = mRecyclerView.getChildAdapterPosition(binding.getRoot());
-            if (adapterPosition == RecyclerView.NO_POSITION) {
-                return true;
-            }
+            // some 3rd party libraries (for ex. StickyHeader libraries) use ViewHolder to store view that attached outside of RecyclerView
+            // to handle the case we need to check LayoutParams
+            if (binding.getRoot().getLayoutParams() instanceof RecyclerView.LayoutParams) {
+                int adapterPosition = mRecyclerView.getChildAdapterPosition(binding.getRoot());
+                if (adapterPosition == RecyclerView.NO_POSITION) {
+                    return true;
+                }
 
-            notifyItemChanged(adapterPosition, PAYLOAD);
+                notifyItemChanged(adapterPosition, PAYLOAD);
+            }
             return false;
         }
     };
