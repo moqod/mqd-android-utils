@@ -1,4 +1,4 @@
-package com.moqod.android.ui;
+package com.moqod.android.utils;
 
 import android.content.Context;
 import android.os.IBinder;

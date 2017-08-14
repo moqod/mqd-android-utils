@@ -6,11 +6,11 @@
 
         <variable
             name="model"
-            type="com.moqod.android.sample.sorted_list.SimpleViewModel" />
+            type="com.moqod.android.sample.diff.SimpleViewModel" />
 
         <variable
             name="eventListener"
-            type="com.moqod.android.sample.sorted_list.EventListener" />
+            type="com.moqod.android.sample.diff.EventListener" />
     </data>
 
     <LinearLayout

@@ -1,4 +1,4 @@
-package com.moqod.android.sample.sorted_list;
+package com.moqod.android.sample.diff;
 
 /**
  * Created with IntelliJ IDEA.

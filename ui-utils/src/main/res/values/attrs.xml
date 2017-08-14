@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ClickableWidget">
+        <attr name="cwPressedFilter" format="color"/>
+        <attr name="cwDisabledAlpha" format="integer"/>
+        <attr name="cwUseRipple" format="boolean"/>
+    </declare-styleable>
+
+</resources>

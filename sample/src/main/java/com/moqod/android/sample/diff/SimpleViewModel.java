@@ -1,6 +1,6 @@
-package com.moqod.android.sample.sorted_list;
+package com.moqod.android.sample.diff;
 
-import com.moqod.android.ui.sorted_list.SortedEntity;
+import com.moqod.android.recycler.diff.DiffEntity;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,7 +9,7 @@ import com.moqod.android.ui.sorted_list.SortedEntity;
  * Time: 22:52
  */
 
-public class SimpleViewModel implements SortedEntity<SimpleViewModel> {
+public class SimpleViewModel implements DiffEntity<SimpleViewModel> {
 
     public final int id;
     public final String title;
