@@ -58,7 +58,7 @@ class StateDrawable {
 
         private DrawableStateLayerDrawable(Drawable d, int pressedFilterColor, int disabledAlpha) {
             super(new Drawable[]{d});
-            mPressedFilter = new PorterDuffColorFilter(pressedFilterColor, PorterDuff.Mode.SRC_OVER);
+            mPressedFilter = new PorterDuffColorFilter(pressedFilterColor, PorterDuff.Mode.SRC_ATOP);
             mDisabledAlpha = disabledAlpha;
         }
 
