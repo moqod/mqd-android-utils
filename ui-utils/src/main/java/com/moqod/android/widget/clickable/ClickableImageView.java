@@ -31,8 +31,8 @@ public class ClickableImageView extends AppCompatImageView {
 
     private void init(Context context, AttributeSet attrs) {
         mParams = StateParams.parseAttrs(context, attrs);
-        setBackgroundDrawable(StateDrawable.create(getBackground(), mParams));
-        setImageDrawable(StateDrawable.create(getDrawable(), mParams));
+        super.setBackgroundDrawable(StateDrawable.create(getBackground(), mParams));
+        super.setImageDrawable(StateDrawable.create(getDrawable(), mParams));
     }
 
     @Override

@@ -33,8 +33,8 @@ public class ClickableTextView extends AppCompatTextView {
 
     private void init(Context context, AttributeSet attrs) {
         mParams = StateParams.parseAttrs(context, attrs);
-        setBackgroundDrawable(StateDrawable.create(getBackground(), mParams));
-        setTextColor(StateColor.create(getTextColors(), mParams));
+        super.setBackgroundDrawable(StateDrawable.create(getBackground(), mParams));
+        super.setTextColor(StateColor.create(getTextColors(), mParams));
     }
 
     @Override

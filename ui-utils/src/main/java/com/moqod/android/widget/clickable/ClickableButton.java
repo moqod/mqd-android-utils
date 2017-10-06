@@ -31,8 +31,8 @@ public class ClickableButton extends android.support.v7.widget.AppCompatButton {
 
     private void init(Context context, AttributeSet attrs) {
         mParams = StateParams.parseAttrs(context, attrs);
-        setBackgroundDrawable(StateDrawable.create(getBackground(), mParams));
-        setTextColor(StateColor.create(getTextColors(), mParams));
+        super.setBackgroundDrawable(StateDrawable.create(getBackground(), mParams));
+        super.setTextColor(StateColor.create(getTextColors(), mParams));
     }
 
     @Override
