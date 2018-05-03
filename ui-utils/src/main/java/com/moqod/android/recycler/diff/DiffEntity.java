@@ -1,4 +1,4 @@
-package com.moqod.android.ui.sorted_list;
+package com.moqod.android.recycler.diff;
 
 /**
  * Created with IntelliJ IDEA.
@@ -6,7 +6,7 @@ package com.moqod.android.ui.sorted_list;
  * Date: 19/09/16
  * Time: 19:37
  */
-public interface SortedEntity<E extends SortedEntity> {
+public interface DiffEntity<E extends DiffEntity> {
     boolean areItemsTheSame(E entity);
     boolean areContentsTheSame(E entity);
 }

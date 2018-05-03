@@ -1,4 +1,4 @@
-package com.moqod.android.sample.sorted_list;
+package com.moqod.android.sample.diff;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements EventListener {
 
     private Random mRandom = new Random();
     private ArrayList<SimpleViewModel> mTestData = new ArrayList<>();
-    private SortedAdapter mSortedAdapter;
+    private DiffAdapter mDiffAdapter;
 
     {
         for (int i = 0; i < 5; i++) {
@@ -38,22 +38,22 @@ public class MainActivity extends AppCompatActivity implements EventListener {
                 int index = Math.max(mRandom.nextInt() % mTestData.size(), 0);
                 int id = mTestData.size();
                 mTestData.add(index, new SimpleViewModel(id, "Test item " + id));
-                mSortedAdapter.setData(mTestData);
+                mDiffAdapter.setData(mTestData);
             }
         });
 
-        mSortedAdapter = new SortedAdapter(this);
+        mDiffAdapter = new DiffAdapter(this);
 
         RecyclerView recycler = (RecyclerView) findViewById(R.id.content_main_recycler);
         recycler.setLayoutManager(new LinearLayoutManager(this));
-        recycler.setAdapter(mSortedAdapter);
+        recycler.setAdapter(mDiffAdapter);
 
-        mSortedAdapter.setData(mTestData);
+        mDiffAdapter.setData(mTestData);
     }
 
     @Override
     public void onDeleteClicked(SimpleViewModel viewModel) {
         mTestData.remove(viewModel);
-        mSortedAdapter.setData(mTestData);
+        mDiffAdapter.setData(mTestData);
     }
 }

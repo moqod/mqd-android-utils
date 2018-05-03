@@ -1,21 +1,21 @@
-package com.moqod.android.sample.sorted_list;
+package com.moqod.android.sample.diff;
 
 import com.moqod.android.databinding.recycler.BindingAdapter;
 import com.moqod.android.databinding.recycler.BindingViewHolder;
 import com.moqod.android.sample.R;
 import com.moqod.android.sample.databinding.ItemSortedAdapterBinding;
-import com.moqod.android.ui.sorted_list.SortedListWrapper;
+import com.moqod.android.recycler.diff.DiffListWrapper;
 
 import java.util.List;
 
-public class SortedAdapter extends BindingAdapter<ItemSortedAdapterBinding> {
+public class DiffAdapter extends BindingAdapter<ItemSortedAdapterBinding> {
 
-    private SortedListWrapper<SimpleViewModel> mData;
+    private DiffListWrapper<SimpleViewModel> mData;
     private EventListener mEventListener;
 
-    public SortedAdapter(EventListener eventListener) {
+    public DiffAdapter(EventListener eventListener) {
         mEventListener = eventListener;
-        mData = new SortedListWrapper<>(this);
+        mData = new DiffListWrapper<>(this);
     }
 
     public void setData(List<SimpleViewModel> data) {
