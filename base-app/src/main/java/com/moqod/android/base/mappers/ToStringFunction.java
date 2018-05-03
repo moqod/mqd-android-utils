@@ -3,10 +3,12 @@ package com.moqod.android.base.mappers;
 /**
  * Created with IntelliJ IDEA.
  * User: Sergey Chuvashev
- * Date: 13/09/2017
- * Time: 14:04
+ * Date: 16/01/2018
+ * Time: 14:47
  */
 
-public interface Mapper<F, T> {
-    T map(F var1);
+public interface ToStringFunction<T> {
+
+    String apply(T t);
+
 }
