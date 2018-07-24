@@ -1,5 +1,6 @@
 package com.moqod.android.recycler.diff;
 
+import android.support.annotation.Nullable;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 
@@ -84,6 +85,12 @@ public class DiffListWrapper<T extends DiffEntity> {
         @Override
         public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
             return mOldData.get(oldItemPosition).areContentsTheSame(mNewData.get(newItemPosition));
+        }
+
+        @Nullable
+        @Override
+        public Object getChangePayload(int oldItemPosition, int newItemPosition) {
+            return Boolean.FALSE;
         }
     }
 
