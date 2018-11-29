@@ -12,11 +12,10 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 24
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -32,5 +31,5 @@ android {
 }
 
 dependencies {
-    provided "com.android.support:recyclerview-v7:$rootProject.ext.supportVersion"
+    compileOnly "com.android.support:recyclerview-v7:$rootProject.ext.supportVersion"
 }
