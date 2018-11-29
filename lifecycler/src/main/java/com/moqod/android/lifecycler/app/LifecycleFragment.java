@@ -2,6 +2,7 @@ package com.moqod.android.lifecycler.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import com.moqod.android.lifecycler.Lifecycle;
@@ -19,7 +20,12 @@ public abstract class LifecycleFragment extends Fragment {
 
     private HashSet<Lifecycle> mLifecycleComponentList = new HashSet<>();
 
+    private boolean mOnCreateCalled;
+
     protected void addLifecycle(Lifecycle... lifecycles) {
+        if (mOnCreateCalled) {
+            throw new IllegalStateException("method addLifecycle should be called before onCreate()");
+        }
         Collections.addAll(mLifecycleComponentList, lifecycles);
     }
 
@@ -39,8 +45,18 @@ public abstract class LifecycleFragment extends Fragment {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        for (Lifecycle lifecycle : mLifecycleComponentList) {
+            lifecycle.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mOnCreateCalled = true;
 
         for (Lifecycle lifecycle : mLifecycleComponentList) {
             lifecycle.restoreState(savedInstanceState);
@@ -101,4 +117,9 @@ public abstract class LifecycleFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mOnCreateCalled = false;
+    }
 }

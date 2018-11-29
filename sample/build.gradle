@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.moqod.android.sample"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -30,4 +30,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation project(':data-binding-utils')
     implementation project(':ui-utils')
+    implementation project(':lifecycler')
 }

@@ -16,6 +16,10 @@ public abstract class LifecycleAdapter implements Lifecycle {
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    }
+
+    @Override
     public void onStart() {
     }
 

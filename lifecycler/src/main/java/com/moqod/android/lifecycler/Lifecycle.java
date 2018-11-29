@@ -12,6 +12,7 @@ import android.support.annotation.Nullable;
  */
 public interface Lifecycle {
     void onActivityResult(int requestCode, int resultCode, Intent data);
+    void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults);
     void onStart();
     void onResume();
     void onPostResume();
