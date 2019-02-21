@@ -1,12 +1,14 @@
 package com.moqod.android.lifecycler.components.media;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import com.moqod.android.lifecycler.LifecycleAdapter;
 
 import java.io.File;
@@ -31,8 +33,8 @@ public class CreatePhotoComponent extends LifecycleAdapter {
     }
 
     public void start(Fragment fragment, File cacheFile) {
-        mFileUri = Uri.fromFile(cacheFile);
-
+        Context context = fragment.requireContext();
+        mFileUri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", cacheFile);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
         fragment.startActivityForResult(intent, mRequestCode);

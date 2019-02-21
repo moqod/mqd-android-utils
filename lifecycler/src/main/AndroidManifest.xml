@@ -1,5 +1,16 @@
-<manifest package="com.moqod.android.lifecycler">
+<manifest package="com.moqod.android.lifecycler"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <application />
+    <application>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+    </application>
 
 </manifest>
