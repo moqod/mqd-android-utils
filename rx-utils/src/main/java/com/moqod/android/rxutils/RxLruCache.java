@@ -1,7 +1,7 @@
 package com.moqod.android.rxutils;
 
 import android.util.LruCache;
-import rx.AsyncEmitter;
+import rx.Emitter;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -20,16 +20,16 @@ public class RxLruCache<K,V> {
     }
 
     public Observable<V> get(final K key) {
-        return Observable.fromEmitter(new Action1<AsyncEmitter<V>>() {
+        return Observable.create(new Action1<Emitter<V>>() {
             @Override
-            public void call(AsyncEmitter<V> asyncEmitter) {
+            public void call(Emitter<V> asyncEmitter) {
                 V value = mLruCache.get(key);
                 if (value != null) {
                     asyncEmitter.onNext(value);
                 }
                 asyncEmitter.onCompleted();
             }
-        }, AsyncEmitter.BackpressureMode.LATEST);
+        }, Emitter.BackpressureMode.LATEST);
     }
 
     public void put(K key, V value) {

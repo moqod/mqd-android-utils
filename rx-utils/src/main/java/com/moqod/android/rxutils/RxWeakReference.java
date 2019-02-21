@@ -1,6 +1,6 @@
 package com.moqod.android.rxutils;
 
-import rx.AsyncEmitter;
+import rx.Emitter;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -17,9 +17,9 @@ public class RxWeakReference<T> {
     private WeakReference<T> mRef;
 
     public Observable<T> get() {
-        return Observable.fromEmitter(new Action1<AsyncEmitter<T>>() {
+        return Observable.create(new Action1<Emitter<T>>() {
             @Override
-            public void call(AsyncEmitter<T> asyncEmitter) {
+            public void call(Emitter<T> asyncEmitter) {
                 if (mRef != null) {
                     T t = mRef.get();
                     if (t != null) {
@@ -28,7 +28,7 @@ public class RxWeakReference<T> {
                 }
                 asyncEmitter.onCompleted();
             }
-        }, AsyncEmitter.BackpressureMode.LATEST);
+        }, Emitter.BackpressureMode.LATEST);
     }
 
     public void put(T t) {
