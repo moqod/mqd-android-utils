@@ -2,7 +2,7 @@ package com.moqod.android.lifecycler.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import com.moqod.android.lifecycler.Lifecycle;
 
 import java.util.Collections;
