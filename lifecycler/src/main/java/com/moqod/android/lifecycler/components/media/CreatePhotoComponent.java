@@ -37,6 +37,8 @@ public class CreatePhotoComponent extends LifecycleAdapter {
         mFileUri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", cacheFile);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         fragment.startActivityForResult(intent, mRequestCode);
     }
 
@@ -44,6 +46,8 @@ public class CreatePhotoComponent extends LifecycleAdapter {
         mFileUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", cacheFile);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         activity.startActivityForResult(intent, mRequestCode);
     }
 
