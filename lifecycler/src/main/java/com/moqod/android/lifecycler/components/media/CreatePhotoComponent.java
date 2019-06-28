@@ -40,6 +40,13 @@ public class CreatePhotoComponent extends LifecycleAdapter {
         fragment.startActivityForResult(intent, mRequestCode);
     }
 
+    public void start(Activity activity, File cacheFile) {
+        mFileUri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", cacheFile);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
+        activity.startActivityForResult(intent, mRequestCode);
+    }
+
     @Override
     public void restoreState(@Nullable Bundle inState) {
         if (inState != null) {
