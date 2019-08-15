@@ -1,6 +1,6 @@
 package com.moqod.android.recycler.sticky;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by zenkefer (zenkefer@gmail.com) on 25.02.2017

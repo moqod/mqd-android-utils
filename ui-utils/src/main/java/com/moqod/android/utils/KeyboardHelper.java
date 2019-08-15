@@ -2,9 +2,9 @@ package com.moqod.android.utils;
 
 import android.content.Context;
 import android.os.IBinder;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import androidx.fragment.app.Fragment;
 
 public class KeyboardHelper {
 
@@ -26,7 +26,7 @@ public class KeyboardHelper {
     public static void hideKeyboard(Fragment fragment) {
         View view = fragment.getView();
         if (view != null) {
-            hideKeyboard(fragment.getContext(), view.getWindowToken());
+            hideKeyboard(fragment.requireContext(), view.getWindowToken());
         }
     }
 }

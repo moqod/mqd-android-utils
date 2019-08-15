@@ -2,11 +2,12 @@ package com.moqod.android.recycler.sticky;
 
 import android.graphics.Canvas;
 import android.graphics.RectF;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * Created by zenkefer (zenkefer@gmail.com) on 25.02.2017
  */
+
 public class StickyDecoration extends RecyclerView.ItemDecoration implements RecyclerView.OnItemTouchListener {
 
     private RecyclerView.Adapter mAdapter;
@@ -130,7 +132,7 @@ public class StickyDecoration extends RecyclerView.ItemDecoration implements Rec
     }
 
     @Override
-    public void onDrawOver(Canvas canvas, RecyclerView parent, RecyclerView.State state) {
+    public void onDrawOver(@NonNull Canvas canvas, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         if (mHeaderType >= 0) {
             int topPos = ((LinearLayoutManager) parent.getLayoutManager()).findFirstVisibleItemPosition();
             mHeaderRect.set(0, 0, 0, 0);
