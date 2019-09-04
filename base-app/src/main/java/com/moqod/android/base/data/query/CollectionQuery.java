@@ -1,6 +1,6 @@
 package com.moqod.android.base.data.query;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 /**
  * Created with IntelliJ IDEA.

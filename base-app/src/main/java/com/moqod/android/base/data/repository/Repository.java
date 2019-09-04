@@ -1,6 +1,6 @@
 package com.moqod.android.base.data.repository;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.moqod.android.base.data.query.Query;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
