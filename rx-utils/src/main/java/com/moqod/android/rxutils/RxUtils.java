@@ -1,110 +1,116 @@
 package com.moqod.android.rxutils;
 
-import rx.Observable;
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func0;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.Completable;
+import io.reactivex.CompletableSource;
+import io.reactivex.CompletableTransformer;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
+import io.reactivex.Maybe;
+import io.reactivex.MaybeSource;
+import io.reactivex.MaybeTransformer;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.Single;
+import io.reactivex.SingleSource;
+import io.reactivex.SingleTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import org.reactivestreams.Publisher;
 
 import java.util.HashMap;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Sergey Chuvashev
- * Date: 17/03/16
- * Time: 20:26
+ * Created by zenkefer on 13.09.2019
  */
+
 public class RxUtils {
 
-    @SuppressWarnings("unchecked")
-    public static <T> Observable.Transformer<T, T> applySchedulers() {
-        return new Observable.Transformer<T, T>() {
-            @Override
-            public Observable<T> call(Observable<T> observable) {
-                return observable.subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-            }
-        };
+    public static  Action emptyAction() {
+        return () -> {};
     }
 
-    private static final HashMap<Object, CompositeSubscription> sSubscriptions = new HashMap<Object, CompositeSubscription>();
-
-    public static void manage(Object tag, Subscription subscription) {
-        CompositeSubscription subscriptions = sSubscriptions.get(tag);
-        if (subscriptions == null) {
-            subscriptions = new CompositeSubscription();
-            sSubscriptions.put(tag, subscriptions);
-        }
-
-        subscriptions.add(subscription);
+    public static <T> Consumer<T> emptyConsumer() {
+        return t -> {};
     }
 
-    public static void unsubscribe(Object tag) {
-        CompositeSubscription subscriptions = sSubscriptions.get(tag);
-        if (subscriptions != null) {
-            subscriptions.unsubscribe();
-            sSubscriptions.remove(tag);
-        }
+
+    public static <T> ObservableTransformer<T, T> applySchedulersObservable() {
+        return upstream -> upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static <T> FlowableTransformer<T, T> applySchedulersFlowable() {
+        return upstream -> upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static <T> SingleTransformer<T, T> applySchedulersSingle() {
+        return upstream -> upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static <T> MaybeTransformer<T, T> applySchedulersMaybe() {
+        return upstream -> upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static CompletableTransformer applySchedulersCompletable() {
+        return upstream -> upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> Observable.Transformer<T, T> observeUntil(final Func0<Boolean> predicate) {
-        return new Observable.Transformer<T, T>() {
-            @Override
-            public Observable<T> call(Observable<T> observable) {
-                return observable.lift(new ConditionalOperator<T>(predicate));
-            }
-        };
+    public static <T> SchedulersTransformer<T> applySchedulers() {
+        return (SchedulersTransformer<T>) sSchedulersTransformer;
     }
 
-    private static class ConditionalOperator<T> implements Observable.Operator<T, T> {
+    private static SchedulersTransformer<Object> sSchedulersTransformer = new SchedulersTransformer<>();
 
-        private Func0<Boolean> mPredicate;
+    public static class SchedulersTransformer<T> implements ObservableTransformer<T, T>, FlowableTransformer<T, T>, SingleTransformer<T, T>, MaybeTransformer<T, T>, CompletableTransformer {
 
-        private ConditionalOperator(Func0<Boolean> predicate) {
-            mPredicate = predicate;
+        @Override
+        public Publisher<T> apply(Flowable<T> upstream) {
+            return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
         }
 
         @Override
-        public Subscriber<? super T> call(final Subscriber<? super T> subscriber) {
-            return new Subscriber<T>() {
-                @Override
-                public void onCompleted() {
-                    if (notifyEvents()) {
-                        subscriber.onCompleted();
-                    } else {
-                        stop();
-                    }
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    if (notifyEvents()) {
-                        subscriber.onError(e);
-                    } else {
-                        stop();
-                    }
-                }
-
-                @Override
-                public void onNext(T t) {
-                    if (notifyEvents()) {
-                        subscriber.onNext(t);
-                    } else {
-                        stop();
-                    }
-                }
-
-                private void stop() {
-                    unsubscribe();
-                }
-            };
+        public ObservableSource<T> apply(Observable<T> upstream) {
+            return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
         }
 
-        private boolean notifyEvents() {
-            return mPredicate.call();
+        @Override
+        public SingleSource<T> apply(Single<T> upstream) {
+            return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        }
+
+        @Override
+        public MaybeSource<T> apply(Maybe<T> upstream) {
+            return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        }
+
+        @Override
+        public CompletableSource apply(Completable upstream) {
+            return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        }
+    }
+
+
+    private static final HashMap<Object, CompositeDisposable> sDisposables = new HashMap<>();
+
+    public static void manage(Object tag, Disposable disposable) {
+        CompositeDisposable disposables = sDisposables.get(tag);
+        if (disposables == null) {
+            disposables = new CompositeDisposable();
+            sDisposables.put(tag, disposables);
+        }
+        disposables.add(disposable);
+    }
+
+    public static void dispose(Object tag) {
+        CompositeDisposable disposables = sDisposables.get(tag);
+        if (disposables != null) {
+            disposables.dispose();
+            sDisposables.remove(tag);
         }
     }
 
