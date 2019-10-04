@@ -18,7 +18,7 @@ public class MultiTypeManager {
     public MultiTypeManager() {
     }
 
-    protected void addBinder(int type, MultiTypeViewBinder binder) {
+    public void addBinder(int type, MultiTypeViewBinder binder) {
         mBinderArray.put(type, binder);
     }
 
