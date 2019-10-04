@@ -6,7 +6,7 @@ package com.moqod.android.recycler.diff;
  * Date: 19/09/16
  * Time: 19:37
  */
-public interface DiffEntity<E extends DiffEntity> {
-    boolean areItemsTheSame(E entity);
-    boolean areContentsTheSame(E entity);
+public interface DiffEntity {
+    boolean areItemsTheSame(DiffEntity entity);
+    boolean areContentsTheSame(DiffEntity entity);
 }

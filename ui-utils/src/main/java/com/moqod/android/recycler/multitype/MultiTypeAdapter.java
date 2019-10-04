@@ -1,6 +1,7 @@
 package com.moqod.android.recycler.multitype;
 
 import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 /**
@@ -28,14 +29,15 @@ public abstract class MultiTypeAdapter extends RecyclerView.Adapter {
         return mManager.getItemViewType(model);
     }
 
+    @NonNull
     @Override
-    public final RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public final RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return mManager.onCreateViewHolder(parent, viewType);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public final void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public final void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         mManager.onBindViewHolder(holder, getItem(position));
     }
 }
