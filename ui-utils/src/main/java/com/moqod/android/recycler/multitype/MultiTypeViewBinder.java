@@ -4,6 +4,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 /**
  * Created by zenkefer(zenkefer@gmail.com) on 12.09.2017
  */
@@ -19,4 +21,8 @@ public abstract class MultiTypeViewBinder<Holder extends RecyclerView.ViewHolder
 
     public abstract void onBindViewHolder(Holder holder, Model model);
 
+    @SuppressWarnings("rawtypes")
+    public void onBindViewHolder(Holder holder, Model model, List payloads) {
+        onBindViewHolder(holder, model);
+    }
 }

@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Sergey Chuvashev
@@ -45,4 +47,7 @@ public class MultiTypeManager {
         return mBinderArray.get(viewType);
     }
 
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, Object model, List payloads) {
+        getViewBinder(getItemViewType(model)).onBindViewHolder(holder, model, payloads);
+    }
 }

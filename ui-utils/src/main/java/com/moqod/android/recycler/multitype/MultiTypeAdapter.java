@@ -4,6 +4,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Sergey Chuvashev
@@ -39,5 +41,10 @@ public abstract class MultiTypeAdapter extends RecyclerView.Adapter {
     @SuppressWarnings("unchecked")
     public final void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         mManager.onBindViewHolder(holder, getItem(position));
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position, @NonNull List payloads) {
+        mManager.onBindViewHolder(holder, getItem(position), payloads);
     }
 }
