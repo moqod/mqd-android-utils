@@ -19,7 +19,7 @@ public abstract class MultiTypeViewBinder<Holder extends RecyclerView.ViewHolder
 
     public abstract Holder onCreateViewHolder(LayoutInflater inflater, ViewGroup parent);
 
-    public abstract void onBindViewHolder(Holder holder, Model model);
+    public void onBindViewHolder(Holder holder, Model model) {}
 
     @SuppressWarnings("rawtypes")
     public void onBindViewHolder(Holder holder, Model model, List payloads) {
