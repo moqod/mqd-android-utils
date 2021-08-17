@@ -9,4 +9,5 @@ package com.moqod.android.recycler.diff;
 public interface DiffEntity {
     boolean areItemsTheSame(DiffEntity entity);
     boolean areContentsTheSame(DiffEntity entity);
+    Object getChangePayload(DiffEntity entity);
 }
