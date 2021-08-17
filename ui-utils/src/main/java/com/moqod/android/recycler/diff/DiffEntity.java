@@ -1,5 +1,7 @@
 package com.moqod.android.recycler.diff;
 
+import androidx.annotation.Nullable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Sergey Chuvashev
@@ -9,5 +11,5 @@ package com.moqod.android.recycler.diff;
 public interface DiffEntity {
     boolean areItemsTheSame(DiffEntity entity);
     boolean areContentsTheSame(DiffEntity entity);
-    Object getChangePayload(DiffEntity entity);
+    @Nullable Object getChangePayload(DiffEntity entity);
 }
