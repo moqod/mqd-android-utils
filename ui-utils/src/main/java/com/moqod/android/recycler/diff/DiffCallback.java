@@ -23,6 +23,6 @@ public class DiffCallback extends DiffUtil.ItemCallback<DiffEntity>{
     @Nullable
     @Override
     public Object getChangePayload(@NonNull DiffEntity oldItem, @NonNull DiffEntity newItem) {
-        return true;
+        return oldItem.getChangePayload(newItem);
     }
 }
